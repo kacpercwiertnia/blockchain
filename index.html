@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+
+Na pewno:
+#DONE 1. Dorobienie opcji dla ETHEREUM (uzycie MORALIS)
+#DONE 2. Waluty z API walutowego, bo teraz sa zahardcodowane - NIE DIZLA MIEDZY BTC I ETH
+3. Dokumentacja projektowa w PDF
+#DONE 4. Dodac eksport grafu (jakis eksport do PNG czy cos)
+
+Potencjalnie:
+1. Zaznaczanie klastrow (nie hardcoded)
+2. Grubosc linii w zaleznosci od wartosci
+
+TODO:
+Zpisanie stanu grafu i praca na nim potem np za kilka dni, zbysmy mogli wrocic do niego, bo teraz jak odswiezmy strone to graf i wszystkie transakcje znikają.
+
+-->
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Wychodzące transakcje BTC/ETH</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <h1>Transakcje BTC/ETH</h1>
+  <div class="settings-panel">
+    <h2 class="settings-title">Ustawienia</h2>
+    <div class="settings-row">
+      <label for="startDate" class="settings-label">Data początkowa:</label>
+      <input type="date" id="startDate" value="2025-01-01" class="settings-date">
+      <label for="endDate" class="settings-label">Data końcowa:</label>
+      <input type="date" id="endDate" value="2025-12-31" class="settings-date">
+    </div>
+    <div class="settings-row">
+      <span class="checkbox-group-fancy">
+        <label class="fancy-checkbox-label">
+          <input type="checkbox" id="showOutgoing" class="fancy-checkbox" checked>
+          <span class="fancy-checkmark"></span>
+          Wychodzące
+        </label>
+        <label class="fancy-checkbox-label">
+          <input type="checkbox" id="showIncoming" class="fancy-checkbox" checked>
+          <span class="fancy-checkmark"></span>
+          Przychodzące
+        </label>
+      </span>
+    </div>
+    <div class="settings-row" style="margin-top:10px;">
+      <span style="font-size:1em;color:#1976d2;font-weight:bold;margin-right:12px;">Ustawienia dodatkowe</span>
+    </div>
+    <div class="settings-row">
+      <label for="currencySelect" class="settings-label">Pokaż wartości w walucie:</label>
+      <select id="currencySelect" class="settings-date" style="width:110px;">
+        <option value="BTC">BTC</option>
+        <option value="ETH">ETH</option>
+        <option value="USD">USD</option>
+        <option value="PLN">PLN</option>
+      </select>
+    </div>
+  </div>
+  <div style="margin-bottom:10px;">
+    <label for="chainSelect">Sieć:</label>
+    <select id="chainSelect" style="margin-left:6px;padding:4px 8px;">
+      <option value="BTC" selected>Bitcoin</option>
+      <option value="ETH">Ethereum</option>
+    </select>
+  </div>
+  <div style="margin-bottom:20px;">
+    <input type="text" id="addressInput" placeholder="Wprowadź adres" style="padding:8px;width:320px;">
+    <button id="showTxBtn" style="background:#1976d2;color:#fff;border:none;padding:8px 18px;border-radius:4px;cursor:pointer;">Pokaż transakcje</button>
+  </div>
+  <div id="tables-container"></div>
+  <div id="network"></div>
+  <button id="layoutBtn">Wyśrodkuj</button>
+  <button id="exportBtn">Eksportuj graf do PNG</button>
+  <button id="saveSessionBtn">Zapisz sesję</button>
+  <button id="loadSessionBtn">Wczytaj sesję</button>
+  <input id="sessionFileInput" type="file" accept="application/json" hidden>
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js" defer></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
