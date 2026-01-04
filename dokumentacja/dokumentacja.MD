@@ -13,7 +13,7 @@
 <br><br>
 
 ### Przedmiot:
-**Technologie Blockchain**
+**Blockchain - wyzwania i zagrożenia**
 
 ### Prowadzący:
 **Jan Klima**
